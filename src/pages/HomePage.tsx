@@ -1,6 +1,7 @@
 import React from 'react';
 import { Hero } from '../components/Hero';
 import { SERVICES, COCKTAILS, BRAND_INFO } from '../data/mockupData';
+import { BRAND_IMAGES } from '../data/images';
 import { ArrowRight, Sparkles, Star, Award, Shield, Flame, GlassWater, Check, Heart, Cake, Briefcase } from 'lucide-react';
 
 interface HomePageProps {
@@ -155,6 +156,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     alt={drink.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80';
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#14121b] via-transparent to-transparent" />
                   <div className="absolute top-3 left-3">
@@ -190,12 +194,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="lg:col-span-5 relative">
               <div className="rounded-2xl overflow-hidden border border-white/10 aspect-[4/5] bg-[#14121b] shadow-2xl">
                 <img
-                  src="/images/founder_portrait.jpg"
+                  src={BRAND_IMAGES.founderPortrait}
                   alt="Jairo Pinto - Founder"
                   className="w-full h-full object-cover grayscale contrast-125"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80';
+                    (e.currentTarget as HTMLImageElement).src = BRAND_IMAGES.founderPortraitFallback;
                   }}
                 />
               </div>

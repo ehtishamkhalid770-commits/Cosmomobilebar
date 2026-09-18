@@ -1,33 +1,34 @@
 import React from 'react';
 import { Camera, Instagram, Sparkles, GlassWater } from 'lucide-react';
 import { BRAND_INFO } from '../data/mockupData';
+import { BRAND_IMAGES } from '../data/images';
 
 export const AtmosphereGallery: React.FC = () => {
   const galleryItems = [
     {
-      image: '/images/luxury_bar_hero.jpg',
-      fallback: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80',
+      image: BRAND_IMAGES.luxuryBarSetup,
+      fallback: BRAND_IMAGES.luxuryBarSetupFallback,
       title: 'Illuminated Bar Counter',
       subtitle: 'Geometric 3D Wave & Warm Ambient LED',
       tag: 'Bar Setup',
     },
     {
-      image: '/images/drink_cosmopolitan.jpg',
-      fallback: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80',
+      image: BRAND_IMAGES.signatureCosmo,
+      fallback: BRAND_IMAGES.signatureCosmoFallback,
       title: 'The Signature Cosmo',
       subtitle: 'Citrus Vodka & Flamed Orange Peel',
       tag: 'Cocktails',
     },
     {
-      image: '/images/lead_mixologist.jpg',
-      fallback: 'https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=800&q=80',
+      image: BRAND_IMAGES.leadMixologist,
+      fallback: BRAND_IMAGES.leadMixologistFallback,
       title: 'Master Mixologists',
       subtitle: 'Professional, Warm & Fast Bar Service',
       tag: 'Our Team',
     },
     {
-      image: '/images/event_celebration.jpg',
-      fallback: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
+      image: BRAND_IMAGES.eventCelebration,
+      fallback: BRAND_IMAGES.eventCelebrationFallback,
       title: 'Evening Wedding Toast',
       subtitle: 'Unforgettable Moments with Loved Ones',
       tag: 'Celebration',

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sparkles, Shield, Flame, GlassWater, Clock, Award, CheckCircle } from 'lucide-react';
+import { BRAND_IMAGES } from '../data/images';
 
 export const ExperiencePillars: React.FC = () => {
   const pillars = [
@@ -53,12 +54,12 @@ export const ExperiencePillars: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-3xl overflow-hidden border border-[#e69a9e]/20 shadow-2xl group">
               <img
-                src="/images/luxury_bar_hero.jpg"
+                src={BRAND_IMAGES.luxuryBarSetup}
                 alt="Luxury Mobile Bar Setup"
                 className="w-full h-auto aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700"
                 referrerPolicy="no-referrer"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80';
+                  (e.currentTarget as HTMLImageElement).src = BRAND_IMAGES.luxuryBarSetupFallback;
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0e0d14] via-transparent to-transparent" />
