@@ -1,33 +1,50 @@
 // =======================================================================
-// Cosmo Mobile Bar - Central Asset Images Manager
+// Cosmo Mobile Bar - Resilient Central Asset Images Manager
 // =======================================================================
-// Jab bhi aap apni new real images 'src/assets/images/' folder mein upload karein,
-// aap simply yahan import update kar sakte hain ya existing image replace kar sakte hain.
-// Vite automatically in images ko bundle karega aur Vercel par 100% load karega!
+// Uses Vite's import.meta.glob so it NEVER crashes if an image is renamed,
+// deleted, or uploaded with a different extension (.jpg, .jpeg, .png, .webp).
 // =======================================================================
 
-// Real Local Assets imported from src/assets/images/
-import leadMixologistReal from './images/lead_mixologist.jpg';
-import signatureCosmoReal from './images/drink_cosmopolitan.jpg';
-import luxuryBarHeroReal from './images/luxury_bar_hero.jpg';
-import founderPortraitReal from './images/founder_portrait.jpg';
-import eventCelebrationReal from './images/event_celebration.jpg';
+// Dynamic glob that eagerly imports all valid images from ./images directory
+const localImageModules: Record<string, string> = import.meta.glob(
+  './images/*.{jpg,jpeg,png,webp,svg,JPG,JPEG,PNG,WEBP}',
+  { eager: true, import: 'default' }
+);
+
+const FALLBACKS = {
+  leadMixologist: 'https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=1200&q=80',
+  signatureCosmo: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80',
+  luxuryBarSetup: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+  founderPortrait: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80',
+  eventCelebration: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80',
+};
+
+function resolveImage(pattern: RegExp, fallback: string): string {
+  // Check exact/clean matches first (e.g., without timestamps)
+  for (const [path, url] of Object.entries(localImageModules)) {
+    const filename = path.replace('./images/', '');
+    if (pattern.test(filename)) {
+      return url;
+    }
+  }
+  return fallback;
+}
 
 export const REAL_ASSET_IMAGES = {
   // Master Bartender / Mixologist
-  leadMixologist: leadMixologistReal,
+  leadMixologist: resolveImage(/lead_mixologist\.(jpe?g|png|webp)/i, resolveImage(/lead_mixologist/i, FALLBACKS.leadMixologist)),
 
   // Signature Cosmopolitan Cocktail
-  signatureCosmo: signatureCosmoReal,
+  signatureCosmo: resolveImage(/(drink_cosmopolitan|cosmo)\.(jpe?g|png|webp)/i, resolveImage(/(drink_cosmopolitan|cosmo)/i, FALLBACKS.signatureCosmo)),
 
   // Illuminated Luxury Bar Setup
-  luxuryBarSetup: luxuryBarHeroReal,
+  luxuryBarSetup: resolveImage(/luxury_bar.*\.(jpe?g|png|webp)/i, resolveImage(/luxury_bar/i, FALLBACKS.luxuryBarSetup)),
 
   // Jairo Pinto - Founder Portrait
-  founderPortrait: founderPortraitReal,
+  founderPortrait: resolveImage(/founder_portrait\.(jpe?g|png|webp)/i, resolveImage(/founder_portrait/i, FALLBACKS.founderPortrait)),
 
   // Celebration / Party Atmosphere
-  eventCelebration: eventCelebrationReal,
+  eventCelebration: resolveImage(/event_celebration\.(jpe?g|png|webp)/i, resolveImage(/event_celebration/i, FALLBACKS.eventCelebration)),
 };
 
 // Default export for quick imports
