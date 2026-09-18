@@ -2,32 +2,35 @@ import React from 'react';
 import { Camera, Instagram, Sparkles, GlassWater } from 'lucide-react';
 import { BRAND_INFO } from '../data/mockupData';
 import { BRAND_IMAGES } from '../data/images';
+import { useImages } from '../context/ImageContext';
 
 export const AtmosphereGallery: React.FC = () => {
+  const { images } = useImages();
+
   const galleryItems = [
     {
-      image: BRAND_IMAGES.luxuryBarSetup,
+      image: images.luxuryBarSetup,
       fallback: BRAND_IMAGES.luxuryBarSetupFallback,
       title: 'Illuminated Bar Counter',
       subtitle: 'Geometric 3D Wave & Warm Ambient LED',
       tag: 'Bar Setup',
     },
     {
-      image: BRAND_IMAGES.signatureCosmo,
+      image: images.signatureCosmo,
       fallback: BRAND_IMAGES.signatureCosmoFallback,
       title: 'The Signature Cosmo',
       subtitle: 'Citrus Vodka & Flamed Orange Peel',
       tag: 'Cocktails',
     },
     {
-      image: BRAND_IMAGES.leadMixologist,
+      image: images.leadMixologist,
       fallback: BRAND_IMAGES.leadMixologistFallback,
       title: 'Master Mixologists',
       subtitle: 'Professional, Warm & Fast Bar Service',
       tag: 'Our Team',
     },
     {
-      image: BRAND_IMAGES.eventCelebration,
+      image: images.eventCelebration,
       fallback: BRAND_IMAGES.eventCelebrationFallback,
       title: 'Evening Wedding Toast',
       subtitle: 'Unforgettable Moments with Loved Ones',

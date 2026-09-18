@@ -1,8 +1,10 @@
 import React from 'react';
 import { Sparkles, Shield, Flame, GlassWater, Clock, Award, CheckCircle } from 'lucide-react';
 import { BRAND_IMAGES } from '../data/images';
+import { useImages } from '../context/ImageContext';
 
 export const ExperiencePillars: React.FC = () => {
+  const { images } = useImages();
   const pillars = [
     {
       icon: <Flame className="w-6 h-6 text-[#e69a9e]" />,
@@ -54,7 +56,7 @@ export const ExperiencePillars: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-3xl overflow-hidden border border-[#e69a9e]/20 shadow-2xl group">
               <img
-                src={BRAND_IMAGES.luxuryBarSetup}
+                src={images.luxuryBarSetup}
                 alt="Luxury Mobile Bar Setup"
                 className="w-full h-auto aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700"
                 referrerPolicy="no-referrer"

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GlassWater, Phone, Mail, MapPin, Heart, Code2 } from 'lucide-react';
+import { GlassWater, Phone, Mail, MapPin, Heart, Code2, Lock } from 'lucide-react';
 import { BRAND_INFO } from '../data/mockupData';
 
 interface FooterProps {
@@ -161,10 +161,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWpSpecs }) => 
           <div>
             © {new Date().getFullYear()} Cosmo Mobile Bar LLC. All rights reserved.
           </div>
-          <div className="flex items-center gap-1">
-            <span>Crafted with</span>
-            <Heart className="w-3 h-3 text-[#e69a9e] fill-current" />
-            <span>for seamless WordPress multi-page deployment</span>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => handleLinkClick('admin')}
+              className="text-neutral-500 hover:text-[#e69a9e] transition-colors flex items-center gap-1.5"
+              title="Admin Media Control Center"
+            >
+              <Lock className="w-3 h-3" />
+              <span>Admin Portal</span>
+            </button>
+            <span>•</span>
+            <div className="flex items-center gap-1">
+              <span>Crafted with</span>
+              <Heart className="w-3 h-3 text-[#e69a9e] fill-current" />
+              <span>for seamless luxury catering</span>
+            </div>
           </div>
         </div>
 

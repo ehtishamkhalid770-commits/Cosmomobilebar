@@ -2,6 +2,7 @@ import React from 'react';
 import { Hero } from '../components/Hero';
 import { SERVICES, COCKTAILS, BRAND_INFO } from '../data/mockupData';
 import { BRAND_IMAGES } from '../data/images';
+import { useImages } from '../context/ImageContext';
 import { ArrowRight, Sparkles, Star, Award, Shield, Flame, GlassWater, Check, Heart, Cake, Briefcase } from 'lucide-react';
 
 interface HomePageProps {
@@ -10,6 +11,7 @@ interface HomePageProps {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
+  const { images } = useImages();
   // Top 3 featured services for preview
   const featuredServices = SERVICES.slice(0, 3);
   // Top 3 popular cocktails for preview
@@ -152,7 +154,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-[#1d1a26]">
                   <img
-                    src={drink.image}
+                    src={images.cocktails[drink.id] || drink.image}
                     alt={drink.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
@@ -194,7 +196,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="lg:col-span-5 relative">
               <div className="rounded-2xl overflow-hidden border border-white/10 aspect-[4/5] bg-[#14121b] shadow-2xl">
                 <img
-                  src={BRAND_IMAGES.founderPortrait}
+                  src={images.founderPortrait}
                   alt="Jairo Pinto - Founder"
                   className="w-full h-full object-cover grayscale contrast-125"
                   referrerPolicy="no-referrer"

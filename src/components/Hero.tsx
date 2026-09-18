@@ -2,6 +2,7 @@ import React from 'react';
 import { ShieldCheck, Award, Star, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
 import { BRAND_INFO } from '../data/mockupData';
 import { BRAND_IMAGES } from '../data/images';
+import { useImages } from '../context/ImageContext';
 
 interface HeroProps {
   onBookClick: () => void;
@@ -12,6 +13,7 @@ export const Hero: React.FC<HeroProps> = ({
   onBookClick,
   onExploreMenu,
 }) => {
+  const { images } = useImages();
 
   return (
     <section id="hero-section" className="relative overflow-hidden pt-6 pb-20 lg:pt-12 lg:pb-32 bg-gradient-to-b from-[#0b0a0e] via-[#121017] to-[#0c0b10]">
@@ -98,7 +100,7 @@ export const Hero: React.FC<HeroProps> = ({
               {/* Main Image Container */}
               <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#16141d] shadow-2xl aspect-[4/5] group">
                 <img
-                  src={BRAND_IMAGES.leadMixologist}
+                  src={images.leadMixologist}
                   alt="Cosmo Mobile Bar Master Mixologist"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
@@ -133,7 +135,7 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="absolute -top-4 -left-4 sm:-left-6 bg-[#16131f]/95 border border-[#e69a9e]/40 backdrop-blur-md rounded-2xl p-3 shadow-2xl flex items-center gap-3 animate-float hidden sm:flex">
                 <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/10 shrink-0">
                   <img
-                    src={BRAND_IMAGES.signatureCosmo}
+                    src={images.signatureCosmo}
                     alt="Classic Cosmo"
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"

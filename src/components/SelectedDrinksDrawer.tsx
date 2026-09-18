@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Trash2, ArrowRight, GlassWater, CheckCircle2 } from 'lucide-react';
 import { COCKTAILS } from '../data/mockupData';
+import { useImages } from '../context/ImageContext';
 
 interface SelectedDrinksDrawerProps {
   isOpen: boolean;
@@ -17,6 +18,7 @@ export const SelectedDrinksDrawer: React.FC<SelectedDrinksDrawerProps> = ({
   onRemoveCocktail,
   onProceedToBooking,
 }) => {
+  const { images } = useImages();
   if (!isOpen) return null;
 
   const selectedDrinks = COCKTAILS.filter((c) => selectedCocktailIds.includes(c.id));
@@ -70,7 +72,7 @@ export const SelectedDrinksDrawer: React.FC<SelectedDrinksDrawerProps> = ({
                 >
                   <div className="flex items-center gap-3">
                     <img
-                      src={drink.image}
+                      src={images.cocktails[drink.id] || drink.image}
                       alt={drink.name}
                       className="w-12 h-12 rounded-lg object-cover"
                       referrerPolicy="no-referrer"

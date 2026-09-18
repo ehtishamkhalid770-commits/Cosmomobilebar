@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Sparkles, Plus, Check, GlassWater, Flame, Info, Eye } from 'lucide-react';
 import { COCKTAILS } from '../data/mockupData';
 import { CocktailItem } from '../types';
+import { useImages } from '../context/ImageContext';
 
 interface CocktailsMenuProps {
   selectedCocktailIds: string[];
@@ -14,6 +15,7 @@ export const CocktailsMenu: React.FC<CocktailsMenuProps> = ({
   onToggleCocktail,
   onOpenDrinkDrawer,
 }) => {
+  const { images } = useImages();
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [inspectingDrink, setInspectingDrink] = useState<CocktailItem | null>(null);
 
@@ -105,7 +107,7 @@ export const CocktailsMenu: React.FC<CocktailsMenuProps> = ({
                 {/* Image Header with Tags */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-[#1e1a26]">
                   <img
-                    src={drink.image}
+                    src={images.cocktails[drink.id] || drink.image}
                     alt={drink.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     referrerPolicy="no-referrer"
@@ -211,7 +213,7 @@ export const CocktailsMenu: React.FC<CocktailsMenuProps> = ({
             <div className="bg-[#16141e] border border-[#e69a9e]/30 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl relative">
               <div className="relative aspect-[16/9]">
                 <img
-                  src={inspectingDrink.image}
+                  src={images.cocktails[inspectingDrink.id] || inspectingDrink.image}
                   alt={inspectingDrink.name}
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"

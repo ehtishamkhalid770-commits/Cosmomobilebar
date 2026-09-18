@@ -2,12 +2,14 @@ import React from 'react';
 import { Award, Heart, CheckCircle2, GlassWater, Quote } from 'lucide-react';
 import { BRAND_INFO } from '../data/mockupData';
 import { BRAND_IMAGES } from '../data/images';
+import { useImages } from '../context/ImageContext';
 
 interface FounderStoryProps {
   onBookClick: () => void;
 }
 
 export const FounderStory: React.FC<FounderStoryProps> = ({ onBookClick }) => {
+  const { images } = useImages();
   return (
     <section id="about" className="py-24 bg-[#0b0a0e] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -21,7 +23,7 @@ export const FounderStory: React.FC<FounderStoryProps> = ({ onBookClick }) => {
               
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#14121b] aspect-[4/5] group">
                 <img
-                  src={BRAND_IMAGES.founderPortrait}
+                  src={images.founderPortrait}
                   alt="Jairo Pinto - Founder of Cosmo Mobile Bar"
                   className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
