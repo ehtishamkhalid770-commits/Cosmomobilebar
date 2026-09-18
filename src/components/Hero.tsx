@@ -97,10 +97,13 @@ export const Hero: React.FC<HeroProps> = ({
               {/* Main Image Container */}
               <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#16141d] shadow-2xl aspect-[4/5] group">
                 <img
-                  src="/src/assets/images/lead_mixologist_1789758760315.jpg"
+                  src="/images/lead_mixologist.jpg"
                   alt="Cosmo Mobile Bar Master Mixologist"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80';
+                  }}
                 />
 
                 {/* Gradient Overlay for Editorial Depth */}
@@ -129,10 +132,13 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="absolute -top-4 -left-4 sm:-left-6 bg-[#16131f]/95 border border-[#e69a9e]/40 backdrop-blur-md rounded-2xl p-3 shadow-2xl flex items-center gap-3 animate-float hidden sm:flex">
                 <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/10 shrink-0">
                   <img
-                    src="/src/assets/images/drink_cosmopolitan_1789758862731.jpg"
+                    src="/images/drink_cosmopolitan.jpg"
                     alt="Classic Cosmo"
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80';
+                    }}
                   />
                 </div>
                 <div className="pr-2">

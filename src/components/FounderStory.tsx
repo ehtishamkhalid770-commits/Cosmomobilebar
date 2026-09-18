@@ -20,10 +20,13 @@ export const FounderStory: React.FC<FounderStoryProps> = ({ onBookClick }) => {
               
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#14121b] aspect-[4/5] group">
                 <img
-                  src="/src/assets/images/founder_portrait_1789758778589.jpg"
+                  src="/images/founder_portrait.jpg"
                   alt="Jairo Pinto - Founder of Cosmo Mobile Bar"
                   className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80';
+                  }}
                 />
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0b0a0e] via-transparent to-black/30" />

@@ -190,10 +190,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="lg:col-span-5 relative">
               <div className="rounded-2xl overflow-hidden border border-white/10 aspect-[4/5] bg-[#14121b] shadow-2xl">
                 <img
-                  src="/src/assets/images/founder_portrait_1789758778589.jpg"
+                  src="/images/founder_portrait.jpg"
                   alt="Jairo Pinto - Founder"
                   className="w-full h-full object-cover grayscale contrast-125"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80';
+                  }}
                 />
               </div>
             </div>

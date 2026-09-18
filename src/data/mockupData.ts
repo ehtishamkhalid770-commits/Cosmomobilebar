@@ -90,7 +90,7 @@ export const COCKTAILS: CocktailItem[] = [
     description: 'Crisp, citrus-forward and effortlessly timeless. Crafted with premium citron vodka, Cointreau orange liqueur, fresh tart cranberry, and hand-squeezed Persian lime with a flamed orange zest.',
     glassware: 'Stemmed V-Martini Glass',
     garnish: 'Candied Orange Twist & Lime Disc',
-    image: '/src/assets/images/drink_cosmopolitan_1789758862731.jpg',
+    image: '/images/drink_cosmopolitan.jpg',
     isPopular: true,
   },
   {

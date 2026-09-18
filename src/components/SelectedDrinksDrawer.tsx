@@ -74,6 +74,9 @@ export const SelectedDrinksDrawer: React.FC<SelectedDrinksDrawerProps> = ({
                       alt={drink.name}
                       className="w-12 h-12 rounded-lg object-cover"
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=300&q=80';
+                      }}
                     />
                     <div>
                       <h4 className="font-serif text-sm font-bold text-white">
