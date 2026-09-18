@@ -1,4 +1,5 @@
 import { ServiceItem, CocktailItem, PackageTier, ReviewItem, AddonOption, WordPressSectionSpec } from '../types';
+import { REAL_ASSET_IMAGES } from '../assets/images';
 
 export const BRAND_INFO = {
   name: 'COSMO',
@@ -90,7 +91,7 @@ export const COCKTAILS: CocktailItem[] = [
     description: 'Crisp, citrus-forward and effortlessly timeless. Crafted with premium citron vodka, Cointreau orange liqueur, fresh tart cranberry, and hand-squeezed Persian lime with a flamed orange zest.',
     glassware: 'Stemmed V-Martini Glass',
     garnish: 'Candied Orange Twist & Lime Disc',
-    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80',
+    image: REAL_ASSET_IMAGES.signatureCosmo,
     isPopular: true,
   },
   {
